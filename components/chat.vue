@@ -20,7 +20,7 @@
       </div>
       <div class="message-list">
         <div class="message" v-for="message in messages" :key="message.id">
-          <p class="message-text">{{ message }}</p>
+          <pre class="message-text">{{ message }}</pre>
         </div>
       </div>
     </div>
