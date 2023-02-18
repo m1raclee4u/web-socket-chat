@@ -87,6 +87,7 @@ export default {
     resize: none;
     width: 100%;
     height: 50px;
+    padding: 10px;
   }
   .message-list {
     display: flex;
