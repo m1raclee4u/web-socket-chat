@@ -1,5 +1,8 @@
 <template>
-  <chat/>
+  <div class="app">
+    <header-component/>
+    <chat/>
+  </div>
 </template>
 
 <script>

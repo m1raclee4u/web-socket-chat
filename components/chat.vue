@@ -1,6 +1,5 @@
 <template>
   <div class="app">
-    <header><p>WebSocket Chat Test</p></header>
     <div class="chat-window">
       <div class="input-group">
         <textarea
@@ -41,10 +40,11 @@ export default {
       var ws = new WebSocket("ws://localhost:8080/");
       ws.onopen = () => {
         ws.send(this.messageText);
+        console.log(`Сообщение которое отправляется на сервер: ${this.messageText}`);
         this.messageText = "";
       };
       ws.onmessage = (evt) => {
-        console.log(evt);
+        console.log(`Полученное сообщение с сервера: ${evt.data}`);
         this.messages.push(evt.data);
       };
     },
@@ -52,42 +52,36 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-header {
-  position: fixed;
-  width: 100vw;
-  background-color: #fff;
-  top: 0;
-  height: 50px;
-  p {
-    text-align: center;
-    margin: 0 auto;
-    width: 70%;
-    max-width: 70%;
-    padding: 10px;
-  }
-}
 .app {
   position: fixed;
   width: 100%;
   height: 100vh;
   max-width: 100%;
   max-height: 100vh;
-  padding: 60px 0 10px 0;
+  padding: 60px 10px 10px 10px;
   margin: auto;
   background-color: gray;
 }
 .chat-window {
   position: relative;
-  border-radius: 5px;
-  background-color: #fff;
-  width: 70%;
-  height: 100%;
-  margin: 0 auto;
-  overflow-y: scroll;
+
   display: flex;
   flex-direction: column-reverse;
   gap: 20px;
+
+  width: 100%;
+  height: 100%;
+  max-width: 931px;
+
+  margin: 0 auto;
+
+  border-radius: 5px;
+  background-color: #fff;
+
+  overflow-y: scroll;
+
   padding: 20px;
+  height: 100%;
 
   textarea {
     resize: none;
@@ -100,10 +94,13 @@ header {
     gap: 10px;
     padding: 0 10px;
     .message {
-      word-break: break-word;
       background-color: #27187510;
       padding: 10px 15px 12px 15px;
       border-radius: 8px;
+      p{
+        word-break: break-word;
+
+      }
     }
   }
   .input-group {
